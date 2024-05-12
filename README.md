@@ -67,7 +67,7 @@ forge coverage --report debug
 1. Setup environment variables
 
    - You need to make a `.env` file were you add SEPOLIA_RPC_URL and PRIVATE_KEY as environment variables.
-     - When deplying on testnet you should use a metamask wallet with no real funds for safety. Here you can find out how to export private key: https://support.metamask.io/managing-my-wallet/secret-recovery-phrase-and-private-keys/how-to-export-an-accounts-private-key/#:~:text=On%20the%20'Account%20details'%20page,private%20key%20to%20your%20clipboard.
+     - When deploying on testnet you should use a metamask wallet with no real funds for safety. Here you can find out how to export private key: https://support.metamask.io/managing-my-wallet/secret-recovery-phrase-and-private-keys/how-to-export-an-accounts-private-key/#:~:text=On%20the%20'Account%20details'%20page,private%20key%20to%20your%20clipboard.
      - Getting a sepolia rpc url you can get for free from alchemy. Here is the link: https://www.alchemy.com/
      - Optionally you can add ETHERSCAN_API_KEY for verifying contract when deploying. Here is a link: https://etherscan.io/
 
