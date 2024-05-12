@@ -1,66 +1,106 @@
-## Foundry
+## Foundry UUPSUpgradeable Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This is a demo of an upgradeable contract.
+Upgradeable contract should generally be avoided.
 
-Foundry consists of:
+## Getting started
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+# Requirements
 
-## Documentation
+- git
 
-https://book.getfoundry.sh/
+  - You need to install git. Here are guidlines to install: https://github.com/git-guides/install-git
 
-## Usage
+- foundry
+  - How to install foundry you can find here: https://book.getfoundry.sh/getting-started/installation
 
-### Build
+# Quickstart
 
-```shell
-$ forge build
+```
+git clone https://github.com/Dev568145/foundry-upgrades-f23
+cd foundry-upgrades-f23
+forge build
 ```
 
-### Test
+# Usage
 
-```shell
-$ forge test
+## Start local node
+
+```
+make anvil
 ```
 
-### Format
+# Deploy
 
-```shell
-$ forge fmt
+In a new terminal window run:
+
+```
+make deploy
 ```
 
-### Gas Snapshots
+# Testing
 
-```shell
-$ forge snapshot
+```
+forge test
 ```
 
-### Anvil
+for testing specific functions run:
 
-```shell
-$ anvil
+```
+forge test --mt 'function name'
 ```
 
-### Deploy
+## Testing Coverage
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+forge coverage
 ```
 
-### Cast
+and for coverage based testing:
 
-```shell
-$ cast <subcommand>
+```
+forge coverage --report debug
 ```
 
-### Help
+# Deploying to testnet or mainnet
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+1. Setup environment variables
+
+   - You need to make a `.env` file were you add SEPOLIA_RPC_URL and PRIVATE_KEY as environment variables.
+     - When deplying on testnet you should use a metamask wallet with no real funds for safety. Here you can find out how to export private key: https://support.metamask.io/managing-my-wallet/secret-recovery-phrase-and-private-keys/how-to-export-an-accounts-private-key/#:~:text=On%20the%20'Account%20details'%20page,private%20key%20to%20your%20clipboard.
+     - Getting a sepolia rpc url you can get for free from alchemy. Here is the link: https://www.alchemy.com/
+     - Optionally you can add ETHERSCAN_API_KEY for verifying contract when deploying. Here is a link: https://etherscan.io/
+
+2. Fund you wallet with sepolia testnet ETH
+
+   - Here is a faucet where you can get testnet ETH: https://www.alchemy.com/faucets/ethereum-sepolia
+
+3. Deploy contract to testnet:
+
+   ```
+   make deploy ARGS="--network sepolia"
+   ```
+
+4. Upgrade contract
+
+   ```
+   make upgrade ARGS="--network sepolia"
+   ```
+
+## Estimating gas
+
+You can estimat how much gas each function costs
+
 ```
+forge snapshot
+```
+
+## Formatting
+
+```
+forge fmt
+```
+
+# Acknowledgments
+
+I want to thank Patrick Collins and the team at Cyfrin for this contract. Check out Cyfrin here on github and Patrick Collins on youtube.
